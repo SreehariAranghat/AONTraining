@@ -1,5 +1,7 @@
 ﻿using Library.DataContext;
 using Library.Entities;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,16 @@ namespace Library.Data
 {
     public class UserRepository : Repository<User>
     {
-        public UserRepository(LibraryContext context) : base(context) { }
+        IMemoryCache _cache;
+        ILogger<UserRepository> _logger;
+
+        public UserRepository(LibraryContext context,IMemoryCache cache
+            ,ILogger<UserRepository> logger
+            ) 
+            : base(context) {
+            _cache = cache;
+            _logger = logger;
+        }
 
         public override User Add(User entity)
         {
@@ -20,6 +31,23 @@ namespace Library.Data
             }
 
             return base.Add(entity);
+        }
+
+        public override List<User> GetAll()
+        {
+            if (_cache.TryGetValue("users", out List<User> books))
+            {
+                _logger.LogInformation("Users was accessed from cache ");
+                return books;
+            }
+            else
+            {
+                _logger.LogInformation("Users was not found on cache fetching from db");
+                var b = base.GetAll();
+                _cache.Set("users", b);
+
+                return b;
+            }
         }
 
         public override void Delete(int id)

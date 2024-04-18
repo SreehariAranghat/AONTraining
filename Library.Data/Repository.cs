@@ -39,7 +39,7 @@ namespace Library.Data
             return DbContext.Find<T>(id);
         }
 
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
            return DbContext.Set<T>().ToList();
         }

@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMvc();
+builder.Services.AddLogging(options => options.AddConsole());
 builder.Services.AddControllers();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddDbContext<LibraryContext>(
             options => options.UseNpgsql(builder.Configuration
