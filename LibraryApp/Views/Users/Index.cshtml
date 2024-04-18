@@ -1,0 +1,14 @@
+﻿@model List<Library.Entities.User>
+
+@if(Model != null)
+{
+    foreach(var user in Model)
+    {
+        <div>@user.Name</div>
+    }
+}
+
+@if (ViewBag.Message != null)
+{
+    <div>@ViewBag.Message</div>
+}
