@@ -14,6 +14,8 @@ namespace Library.DataContext
         public DbSet<User> Users { get; set; }
         public DbSet<Book> Books { get; set; }
 
+        public DbSet<Log> Logs { get; set; }
+          
         public LibraryContext(DbContextOptions<LibraryContext> options) : base(
             options)
         { }
@@ -23,7 +25,7 @@ namespace Library.DataContext
         {
             modelBuilder.Entity<User>()
                         .HasQueryFilter(d => d.DeletedDate == null)
-                        .HasIndex(d => d.Email).IsUnique();
+                        .HasIndex(d => d.Email);
         }
 
         public override int SaveChanges()

@@ -2,6 +2,7 @@ using Library.Data;
 using Library.DataContext;
 using Library.Entities;
 using LibraryApp.Filters;
+using LibraryApp.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
@@ -12,10 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMvc();
 builder.Services.AddLogging(options => options.AddConsole());
-builder.Services.AddControllers(option =>
-{
-    option.Filters.Add<AuthExceptionFilter>();
-});
+builder.Services.AddControllers();
 builder.Services.AddMemoryCache();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -51,13 +49,17 @@ builder.Services.AddDbContext<LibraryContext>(
         .GetConnectionString("DefaultConStr"))
     );
 
-//builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<LogBookRequests>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IRepository<Book>, BookRepository>();
 builder.Services.AddScoped<IUserRepository,UserRepository>();
 
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseCors();
 
 app.UseSwagger();

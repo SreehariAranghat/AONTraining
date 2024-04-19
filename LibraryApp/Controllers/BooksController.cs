@@ -22,6 +22,7 @@ namespace LibraryApp.Controllers
         [ProducesDefaultResponseType(typeof(List<Book>))]
         [HttpGet]
         [MesureRuntimeFilter()]
+        [ServiceFilter<LogBookRequests>]
         public IActionResult Get()
         {
         
