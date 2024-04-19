@@ -3,6 +3,7 @@ using Library.DataContext;
 using Library.Entities;
 using LibraryApp.Filters;
 using LibraryApp.Middleware;
+using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
@@ -22,8 +23,10 @@ builder.Services.AddSwaggerGen(options =>
 } 
 );
 
-builder.Services.AddAuthentication()
-    
+builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
+    .AddNegotiate(option => 
+        option.EnableLdap("")
+    )
     .AddJwtBearer(
         option => option.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
         {
@@ -59,6 +62,7 @@ builder.Services.AddScoped<IUserRepository,UserRepository>();
 
 var app = builder.Build();
 
+app.UseStaticFiles();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseCors();
 
@@ -74,6 +78,10 @@ app.UseAuthentication();
 app.UseRouting();
 //app.MapControllers();
 app.UseAuthorization();
-app.UseEndpoints(endpoints => endpoints.MapControllers());
+app.UseEndpoints(endpoints => { 
+    
+    endpoints.MapControllers();
+    endpoints.MapFallbackToFile("index.html");
+});
 
 app.Run();
