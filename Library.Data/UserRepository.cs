@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Library.Data
 {
-    public class UserRepository : Repository<User>
+    public class UserRepository : Repository<User>,IUserRepository
     {
         IMemoryCache _cache;
         ILogger<UserRepository> _logger;
@@ -53,6 +53,14 @@ namespace Library.Data
         public override void Delete(int id)
         {
             base.Delete(id);
+        }
+
+        public User FromEmail(string email)
+        {
+            var user = DbContext.Set<User>().FirstOrDefault(
+                d => d.Email == email);
+
+            return user;
         }
     }
 }

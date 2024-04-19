@@ -1,10 +1,14 @@
 ﻿using Library.Data;
 using Library.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryApp.Controllers
 {
-    public class BooksController : Controller
+    [Authorize]
+    [ApiController]
+    [Route("/api/books")]
+    public class BooksController : ControllerBase
     {
         IRepository<Book> _booksRepository;
 
@@ -13,9 +17,10 @@ namespace LibraryApp.Controllers
             _booksRepository = booksRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Get()
         {
-            return View();
+            var books = _booksRepository.GetAll();
+            return Ok(books);
         }
     }
 }
