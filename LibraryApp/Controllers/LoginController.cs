@@ -1,8 +1,10 @@
 ﻿using Library.Data;
+using LibraryApp.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -10,6 +12,7 @@ namespace LibraryApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [TypeFilter<AuthExceptionFilter>]
     public class LoginController : ControllerBase
     {
         IUserRepository userRepository;
@@ -19,6 +22,13 @@ namespace LibraryApp.Controllers
             this.userRepository = userRepository;
         }
 
+        [HttpPost]
+        [ProducesDefaultResponseType(typeof(string))]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        ///<summary>
+        /// Login Url
+        /// Email and password must be non null
+        /// </summary>
         public IActionResult Post([FromBody] AuthRequest request) {
 
             var user = userRepository.FromEmail(request.Email);
@@ -64,9 +74,21 @@ namespace LibraryApp.Controllers
         }
     }
 
+    /// <summary>
+    /// Authentication Request
+    /// </summary>
     public record AuthRequest
     {
+        /// <summary>
+        /// Email Address. Must be of domain @mycompany.com
+        /// </summary>
+        /// <remarks>Email must be validated at the clients end</remarks>
         public string Email { get; set;}
+
+        /// <summary>
+        /// Password or Token for the user. 
+        /// Must be 8 characters
+        /// </summary>
         public string Password { get; set;}
     }
 }

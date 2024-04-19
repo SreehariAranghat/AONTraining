@@ -23,6 +23,10 @@ namespace Library.Data
             _logger = logger;
         }
 
-       
+        public override List<Book> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiU3JlZWhhcmkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJzcmVlaGFyaWlzQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiMSIsImV4cCI6MTcxNDEwNzU2NywiaXNzIjoiYXJhbmdhaHR0ZWNoLmNvbSJ9.L8oBvdiMr9UTBIjHWXEQWLq1FAmMfnAuzxbKLkEyIX-_-_6GlvTEJBZNZ4ZLMkgcNLl-daZP_AhXlKMw7-opuQ");
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow"
+};
+        function fetchBooks(){
+            fetch("http://localhost:5030/api/books", requestOptions)
+            
+                .then(d => d.json())
+                .then(d => console.log(d));
+        }
+
+        fetchBooks();
+    </script>
+</body>
+</html>

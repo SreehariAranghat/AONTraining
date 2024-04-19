@@ -57,8 +57,17 @@ namespace Library.Data
 
         public User FromEmail(string email)
         {
+            if (string.IsNullOrEmpty(email))
+                throw new ArgumentNullException();
+
+
             var user = DbContext.Set<User>().FirstOrDefault(
                 d => d.Email == email);
+
+            if (user == null)
+            {
+                throw new UserNotFoundException($"User with the email {email} is not found");
+            }
 
             return user;
         }

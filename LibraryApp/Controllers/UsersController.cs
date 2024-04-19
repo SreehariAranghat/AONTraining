@@ -13,8 +13,9 @@ namespace LibraryApp.Controllers
         public UsersController(IRepository<User> userRepository)
         {
             this._userRepository = userRepository;
-        }   
+        }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var users = _userRepository.GetAll();

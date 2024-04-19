@@ -7,12 +7,25 @@ using System.Threading.Tasks;
 
 namespace Library.Entities
 {
+    /// <summary>
+    /// Single Entry of Book in the libray
+    /// </summary>
+    /// <remarks>
+    /// Multiple copies of the book may be tagged with
+    /// diffrent id.
+    /// </remarks>
     public class Book : BaseObject
     {
         [Required]
+        ///<summary>
+        /// Book Name 
+        /// </summary>
         public string Name { get; set; }
 
         [Required]
+        ///<summary>
+        ///Book Title
+        /// </summary>
         public string Title { get; set; }
 
         [Required]
