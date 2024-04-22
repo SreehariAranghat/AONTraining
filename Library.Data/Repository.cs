@@ -18,36 +18,36 @@ namespace Library.Data
             this.DbContext = dbContext;
         }
 
-        public virtual T Add(T entity)
+        public virtual async  Task<T> Add(T entity)
         {
             entity.CreatedDate = DateTime.UtcNow;
             DbContext.Set<T>().Add(entity);
-            DbContext.SaveChanges();
+            await DbContext.SaveChangesAsync();
 
             return entity;
         }
 
-        public virtual void Delete(int id)
+        public virtual async Task Delete(int id)
         {
             var t = DbContext.Find<T>(id);
             DbContext.Remove<T>(t);
-            DbContext.SaveChanges();
+            await DbContext.SaveChangesAsync();
         }
 
-        public T FindById(int id)
+        public async Task<T> FindById(int id)
         {
-            return DbContext.Find<T>(id);
+            return await DbContext.FindAsync<T>(id);
         }
 
-        public virtual List<T> GetAll()
+        public  virtual async Task<List<T>> GetAll()
         {
-           return DbContext.Set<T>().ToList();
+           return await DbContext.Set<T>().ToListAsync();
         }
 
-        public virtual T Update(T entity)
+        public virtual async Task<T> Update(T entity)
         {
             DbContext.Update<T>(entity);
-            DbContext.SaveChanges();
+            await DbContext.SaveChangesAsync();
 
             return entity;
         }

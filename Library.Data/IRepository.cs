@@ -4,12 +4,12 @@ namespace Library.Data
 {
     public interface IRepository<T> where T : BaseObject
     {
-        T FindById(int id);
-        List<T> GetAll();
+        Task<T> FindById(int id);
+        Task<List<T>> GetAll();
 
-        T Add(T entity);
-        T Update(T entity);
-        void Delete(int id);
+        Task<T> Add(T entity);
+        Task<T> Update(T entity);
+        Task Delete(int id);
 
     }
 }

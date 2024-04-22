@@ -23,37 +23,37 @@ namespace Library.Data
             _logger = logger;
         }
 
-        public override User Add(User entity)
-        {
-            if(DbContext.Set<User>().Any(d => d.Email == entity.Email))
-            {
-                throw new Exception("User with the same email address already exist");
-            }
+        //public override User Add(User entity)
+        //{
+        //    if(DbContext.Set<User>().Any(d => d.Email == entity.Email))
+        //    {
+        //        throw new Exception("User with the same email address already exist");
+        //    }
 
-            return base.Add(entity);
-        }
+        //    return base.Add(entity);
+        //}
 
-        public override List<User> GetAll()
-        {
-            if (_cache.TryGetValue("users", out List<User> books))
-            {
-                _logger.LogInformation("Users was accessed from cache ");
-                return books;
-            }
-            else
-            {
-                _logger.LogInformation("Users was not found on cache fetching from db");
-                var b = base.GetAll();
-                _cache.Set("users", b);
+        //public override List<User> GetAll()
+        //{
+        //    if (_cache.TryGetValue("users", out List<User> books))
+        //    {
+        //        _logger.LogInformation("Users was accessed from cache ");
+        //        return books;
+        //    }
+        //    else
+        //    {
+        //        _logger.LogInformation("Users was not found on cache fetching from db");
+        //        var b = base.GetAll();
+        //        _cache.Set("users", b);
 
-                return b;
-            }
-        }
+        //        return b;
+        //    }
+        //}
 
-        public override void Delete(int id)
-        {
-            base.Delete(id);
-        }
+        //public override void Delete(int id)
+        //{
+        //    base.Delete(id);
+        //}
 
         public User FromEmail(string email)
         {

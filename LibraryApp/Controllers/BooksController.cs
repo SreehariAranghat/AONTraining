@@ -23,10 +23,10 @@ namespace LibraryApp.Controllers
         [HttpGet]
         [MesureRuntimeFilter()]
         [ServiceFilter<LogBookRequests>]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
         
-            var books = _booksRepository.GetAll();
+            var books = await _booksRepository.GetAll();
             return Ok(books);
         }
     }
