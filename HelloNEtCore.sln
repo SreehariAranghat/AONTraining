@@ -41,10 +41,15 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Data", "Library.Data\Library.Data.csproj", "{62980D80-6572-462C-A112-861B04D78DA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EfCoreAdvanced", "EfCoreAdvanced", "{8D15FD2C-D03F-4CD5-B13B-4AC183BDC45F}"
+	ProjectSection(SolutionItems) = preProject
+		EfCore.md = EfCore.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryAdDbContext", "LibraryAdDbContext\LibraryAdDbContext.csproj", "{6776B6B7-ED59-4FDE-A1BF-FEDE97D63A3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryAdDbContext", "LibraryAdDbContext\LibraryAdDbContext.csproj", "{6776B6B7-ED59-4FDE-A1BF-FEDE97D63A3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryConsoleApp", "LibraryConsoleApp\LibraryConsoleApp.csproj", "{B21B590E-FDD7-4016-B955-D2191E4E64C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryConsoleApp", "LibraryConsoleApp\LibraryConsoleApp.csproj", "{B21B590E-FDD7-4016-B955-D2191E4E64C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDbContextFromDb", "LibraryDbContextFromDb\LibraryDbContextFromDb.csproj", "{C380F48D-A0C2-45AD-8DB6-561FD9A53733}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -143,6 +148,12 @@ Global
 		{B21B590E-FDD7-4016-B955-D2191E4E64C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B21B590E-FDD7-4016-B955-D2191E4E64C9}.Staging|Any CPU.ActiveCfg = Debug|Any CPU
 		{B21B590E-FDD7-4016-B955-D2191E4E64C9}.Staging|Any CPU.Build.0 = Debug|Any CPU
+		{C380F48D-A0C2-45AD-8DB6-561FD9A53733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C380F48D-A0C2-45AD-8DB6-561FD9A53733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C380F48D-A0C2-45AD-8DB6-561FD9A53733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C380F48D-A0C2-45AD-8DB6-561FD9A53733}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C380F48D-A0C2-45AD-8DB6-561FD9A53733}.Staging|Any CPU.ActiveCfg = Debug|Any CPU
+		{C380F48D-A0C2-45AD-8DB6-561FD9A53733}.Staging|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +175,7 @@ Global
 		{62980D80-6572-462C-A112-861B04D78DA2} = {2A0B526D-F219-4BF0-B094-DD39609E0C44}
 		{6776B6B7-ED59-4FDE-A1BF-FEDE97D63A3A} = {8D15FD2C-D03F-4CD5-B13B-4AC183BDC45F}
 		{B21B590E-FDD7-4016-B955-D2191E4E64C9} = {8D15FD2C-D03F-4CD5-B13B-4AC183BDC45F}
+		{C380F48D-A0C2-45AD-8DB6-561FD9A53733} = {8D15FD2C-D03F-4CD5-B13B-4AC183BDC45F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2801B390-6212-4E1A-ADEA-010653B46C20}

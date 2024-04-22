@@ -21,18 +21,21 @@ namespace Library.Entities
         [StringLength(100)]
         public string Password { get; set; }
 
-        public List<Address> Addresses { get; set; }
+        public string? Mobile { get; set; }
+
+        public string? Phone { get; set; }
+
+        public Address? Address { get; set; }
+
     }
 
     public class Address
     {
         [Key]
-        public int Id { get; set; }
+        public int Id { get; set; } 
 
         public string Address1 { get; set; }
-
-        public string City { get; set; }
-
-        public int PinCode { get; set; }
+        public string PinCode { get; set; }
     }
+  
 }

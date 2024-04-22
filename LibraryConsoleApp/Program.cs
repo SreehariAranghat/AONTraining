@@ -3,10 +3,11 @@ using BenchmarkDotNet.Running;
 using Library.Entities;
 using LibraryAdDbContext;
 using LibraryConsoleApp;
+using LibraryDbContextFromDb;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.InteropServices;
 
-var dbContext = new LibraryAdDbContext.LibraryAdDbContext();
+var dbContext = new AonTrainingContext();
 //var users = dbContext.Users;
 
 //foreach (var u in users)
@@ -98,5 +99,8 @@ Console.WriteLine(usersAdo.Count);
 Console.WriteLine(user.Name);
 Console.WriteLine(userAdo.Name);*/
 
-BenchmarkRunner.Run<DataServices>();
+//BenchmarkRunner.Run<DataServices>();
+
+var user = dbContext.Users.Find(1);
+
 

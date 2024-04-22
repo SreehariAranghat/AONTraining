@@ -4,6 +4,7 @@ using LibraryAdDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryAdDbContext.Migrations
 {
     [DbContext(typeof(LibraryAdDbContext))]
-    partial class LibraryAdDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240422071511_ModifiedUserEntity")]
+    partial class ModifiedUserEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,27 +24,6 @@ namespace LibraryAdDbContext.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Library.Entities.Address", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PinCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Address");
-                });
 
             modelBuilder.Entity("Library.Entities.Book", b =>
                 {
@@ -85,7 +67,7 @@ namespace LibraryAdDbContext.Migrations
                         {
                             Id = 1,
                             Author = "Robin Sharma",
-                            CreatedDate = new DateTime(2024, 4, 22, 12, 48, 32, 195, DateTimeKind.Local).AddTicks(7907),
+                            CreatedDate = new DateTime(2024, 4, 22, 12, 45, 10, 772, DateTimeKind.Local).AddTicks(5903),
                             Description = "",
                             Name = "Monk Who sold his ferrari",
                             Title = "Monk Who sold his ferrari"
@@ -94,7 +76,7 @@ namespace LibraryAdDbContext.Migrations
                         {
                             Id = 2,
                             Author = "Bram Stocker",
-                            CreatedDate = new DateTime(2024, 4, 22, 12, 48, 32, 195, DateTimeKind.Local).AddTicks(7910),
+                            CreatedDate = new DateTime(2024, 4, 22, 12, 45, 10, 772, DateTimeKind.Local).AddTicks(5906),
                             Description = "",
                             Name = "Dracula",
                             Title = "Dracula"
@@ -144,8 +126,8 @@ namespace LibraryAdDbContext.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AddressId")
-                        .HasColumnType("int");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -179,15 +161,13 @@ namespace LibraryAdDbContext.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 4, 22, 12, 48, 32, 195, DateTimeKind.Local).AddTicks(7781),
+                            CreatedDate = new DateTime(2024, 4, 22, 12, 45, 10, 772, DateTimeKind.Local).AddTicks(5791),
                             Email = "sreehariis@gmail.com",
                             Name = "Sree",
                             Password = "abcd@1234"
@@ -211,15 +191,6 @@ namespace LibraryAdDbContext.Migrations
                     b.Navigation("Book");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Library.Entities.User", b =>
-                {
-                    b.HasOne("Library.Entities.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
-                    b.Navigation("Address");
                 });
 #pragma warning restore 612, 618
         }
