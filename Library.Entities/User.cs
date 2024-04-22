@@ -20,5 +20,19 @@ namespace Library.Entities
         [Required]
         [StringLength(100)]
         public string Password { get; set; }
+
+        public List<Address> Addresses { get; set; }
+    }
+
+    public class Address
+    {
+        [Key]
+        public int Id { get; set; }
+
+        public string Address1 { get; set; }
+
+        public string City { get; set; }
+
+        public int PinCode { get; set; }
     }
 }
