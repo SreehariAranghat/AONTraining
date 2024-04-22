@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryConsoleApp", "Librar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDbContextFromDb", "LibraryDbContextFromDb\LibraryDbContextFromDb.csproj", "{C380F48D-A0C2-45AD-8DB6-561FD9A53733}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordOtp", "PasswordOtp\PasswordOtp.csproj", "{ABA7E066-8D23-4842-9010-7A92380F18AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +156,12 @@ Global
 		{C380F48D-A0C2-45AD-8DB6-561FD9A53733}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C380F48D-A0C2-45AD-8DB6-561FD9A53733}.Staging|Any CPU.ActiveCfg = Debug|Any CPU
 		{C380F48D-A0C2-45AD-8DB6-561FD9A53733}.Staging|Any CPU.Build.0 = Debug|Any CPU
+		{ABA7E066-8D23-4842-9010-7A92380F18AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA7E066-8D23-4842-9010-7A92380F18AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA7E066-8D23-4842-9010-7A92380F18AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA7E066-8D23-4842-9010-7A92380F18AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA7E066-8D23-4842-9010-7A92380F18AD}.Staging|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA7E066-8D23-4842-9010-7A92380F18AD}.Staging|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -176,6 +184,7 @@ Global
 		{6776B6B7-ED59-4FDE-A1BF-FEDE97D63A3A} = {8D15FD2C-D03F-4CD5-B13B-4AC183BDC45F}
 		{B21B590E-FDD7-4016-B955-D2191E4E64C9} = {8D15FD2C-D03F-4CD5-B13B-4AC183BDC45F}
 		{C380F48D-A0C2-45AD-8DB6-561FD9A53733} = {8D15FD2C-D03F-4CD5-B13B-4AC183BDC45F}
+		{ABA7E066-8D23-4842-9010-7A92380F18AD} = {7384996C-468C-43FC-8589-3988FEA3A4D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2801B390-6212-4E1A-ADEA-010653B46C20}
